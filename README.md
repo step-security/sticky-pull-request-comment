@@ -81,7 +81,7 @@ test:
 If for some reason, triggering on pr is not possible, you can use push.
 
 ```yaml
-- uses: jwalton/gh-find-current-pr@v1
+- uses: step-security/gh-find-current-pr@v1
   id: finder
 - uses: step-security/sticky-pull-request-comment@v2
   with:
