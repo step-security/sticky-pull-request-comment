@@ -2,7 +2,7 @@ import { beforeEach, afterEach, test, expect, vi, describe } from 'vitest'
 
 const mockConfig = {
   pullRequestNumber: 123,
-  repo: {owner: "marocchino", repo: "stick-pull-request-comment"},
+  repo: {owner: "step-security", repo: "stick-pull-request-comment"},
   header: "",
   append: false,
   recreate: false,
@@ -23,7 +23,7 @@ vi.mock('../src/config', () => {
 
 beforeEach(() => {
   // Set up default environment variables for each test
-  process.env["GITHUB_REPOSITORY"] = "marocchino/stick-pull-request-comment"
+  process.env["GITHUB_REPOSITORY"] = "step-security/stick-pull-request-comment"
   process.env["INPUT_NUMBER"] = "123"
   process.env["INPUT_APPEND"] = "false"
   process.env["INPUT_RECREATE"] = "false"
@@ -41,7 +41,7 @@ beforeEach(() => {
   
   // 모킹된 값 초기화
   mockConfig.pullRequestNumber = 123
-  mockConfig.repo = {owner: "marocchino", repo: "stick-pull-request-comment"}
+  mockConfig.repo = {owner: "step-security", repo: "stick-pull-request-comment"}
   mockConfig.header = ""
   mockConfig.append = false
   mockConfig.recreate = false
@@ -112,7 +112,7 @@ test("header", async () => {
   const config = await import('../src/config')
   expect(config).toMatchObject({
     pullRequestNumber: expect.any(Number),
-    repo: {owner: "marocchino", repo: "stick-pull-request-comment"},
+    repo: {owner: "step-security", repo: "stick-pull-request-comment"},
     header: "header",
     append: false,
     recreate: false,
@@ -135,7 +135,7 @@ test("append", async () => {
   const config = await import('../src/config')
   expect(config).toMatchObject({
     pullRequestNumber: expect.any(Number),
-    repo: {owner: "marocchino", repo: "stick-pull-request-comment"},
+    repo: {owner: "step-security", repo: "stick-pull-request-comment"},
     header: "",
     append: true,
     recreate: false,
@@ -158,7 +158,7 @@ test("recreate", async () => {
   const config = await import('../src/config')
   expect(config).toMatchObject({
     pullRequestNumber: expect.any(Number),
-    repo: {owner: "marocchino", repo: "stick-pull-request-comment"},
+    repo: {owner: "step-security", repo: "stick-pull-request-comment"},
     header: "",
     append: false,
     recreate: true,
@@ -181,7 +181,7 @@ test("delete", async () => {
   const config = await import('../src/config')
   expect(config).toMatchObject({
     pullRequestNumber: expect.any(Number),
-    repo: {owner: "marocchino", repo: "stick-pull-request-comment"},
+    repo: {owner: "step-security", repo: "stick-pull-request-comment"},
     header: "",
     append: false,
     recreate: false,
@@ -204,7 +204,7 @@ test("hideOldComment", async () => {
   const config = await import('../src/config')
   expect(config).toMatchObject({
     pullRequestNumber: expect.any(Number),
-    repo: {owner: "marocchino", repo: "stick-pull-request-comment"},
+    repo: {owner: "step-security", repo: "stick-pull-request-comment"},
     header: "",
     append: false,
     recreate: false,
@@ -227,7 +227,7 @@ test("hideAndRecreate", async () => {
   const config = await import('../src/config')
   expect(config).toMatchObject({
     pullRequestNumber: expect.any(Number),
-    repo: {owner: "marocchino", repo: "stick-pull-request-comment"},
+    repo: {owner: "step-security", repo: "stick-pull-request-comment"},
     header: "",
     append: false,
     recreate: false,
@@ -250,7 +250,7 @@ test("hideClassify", async () => {
   const config = await import('../src/config')
   expect(config).toMatchObject({
     pullRequestNumber: expect.any(Number),
-    repo: {owner: "marocchino", repo: "stick-pull-request-comment"},
+    repo: {owner: "step-security", repo: "stick-pull-request-comment"},
     header: "",
     append: false,
     recreate: false,
@@ -273,7 +273,7 @@ test("hideDetails", async () => {
   const config = await import('../src/config')
   expect(config).toMatchObject({
     pullRequestNumber: expect.any(Number),
-    repo: {owner: "marocchino", repo: "stick-pull-request-comment"},
+    repo: {owner: "step-security", repo: "stick-pull-request-comment"},
     header: "",
     append: false,
     recreate: false,
@@ -297,7 +297,7 @@ describe("path", () => {
     const config = await import('../src/config')
     expect(config).toMatchObject({
       pullRequestNumber: expect.any(Number),
-      repo: {owner: "marocchino", repo: "stick-pull-request-comment"},
+      repo: {owner: "step-security", repo: "stick-pull-request-comment"},
       header: "",
       append: false,
       recreate: false,
@@ -320,7 +320,7 @@ describe("path", () => {
     const config = await import('../src/config')
     expect(config).toMatchObject({
       pullRequestNumber: expect.any(Number),
-      repo: {owner: "marocchino", repo: "stick-pull-request-comment"},
+      repo: {owner: "step-security", repo: "stick-pull-request-comment"},
       header: "",
       append: false,
       recreate: false,
@@ -343,7 +343,7 @@ describe("path", () => {
     const config = await import('../src/config')
     expect(config).toMatchObject({
       pullRequestNumber: expect.any(Number),
-      repo: {owner: "marocchino", repo: "stick-pull-request-comment"},
+      repo: {owner: "step-security", repo: "stick-pull-request-comment"},
       header: "",
       append: false,
       recreate: false,
@@ -367,7 +367,7 @@ test("message", async () => {
   const config = await import('../src/config')
   expect(config).toMatchObject({
     pullRequestNumber: expect.any(Number),
-    repo: {owner: "marocchino", repo: "stick-pull-request-comment"},
+    repo: {owner: "step-security", repo: "stick-pull-request-comment"},
     header: "",
     append: false,
     recreate: false,
@@ -390,7 +390,7 @@ test("ignore_empty", async () => {
   const config = await import('../src/config')
   expect(config).toMatchObject({
     pullRequestNumber: expect.any(Number),
-    repo: {owner: "marocchino", repo: "stick-pull-request-comment"},
+    repo: {owner: "step-security", repo: "stick-pull-request-comment"},
     header: "",
     append: false,
     recreate: false,
@@ -413,7 +413,7 @@ test("skip_unchanged", async () => {
   const config = await import('../src/config')
   expect(config).toMatchObject({
     pullRequestNumber: expect.any(Number),
-    repo: {owner: "marocchino", repo: "stick-pull-request-comment"},
+    repo: {owner: "step-security", repo: "stick-pull-request-comment"},
     header: "",
     append: false,
     recreate: false,

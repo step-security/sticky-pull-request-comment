@@ -17,7 +17,7 @@ vi.mock("@actions/core", () => ({
 }))
 
 const repo = {
-  owner: "marocchino",
+  owner: "step-security",
   repo: "sticky-pull-request-comment"
 }
 it("findPreviousComment", async () => {
@@ -96,7 +96,7 @@ it("findPreviousComment", async () => {
   expect(octokit.graphql).toBeCalledWith(expect.any(String), {
     after: null,
     number: 123,
-    owner: "marocchino",
+    owner: "step-security",
     repo: "sticky-pull-request-comment"
   })
 })
@@ -159,7 +159,7 @@ describe("createComment", () => {
     expect(await createComment(octokit, repo, 456, "hello there", "")).toEqual({ data: "<return value>" })
     expect(octokit.rest.issues.createComment).toBeCalledWith({
       issue_number: 456,
-      owner: "marocchino",
+      owner: "step-security",
       repo: "sticky-pull-request-comment",
       body: "hello there\n<!-- Sticky Pull Request Comment -->"
     })
@@ -168,7 +168,7 @@ describe("createComment", () => {
     )
     expect(octokit.rest.issues.createComment).toBeCalledWith({
       issue_number: 456,
-      owner: "marocchino",
+      owner: "step-security",
       repo: "sticky-pull-request-comment",
       body: "hello there\n<!-- Sticky Pull Request CommentTypeA -->"
     })
