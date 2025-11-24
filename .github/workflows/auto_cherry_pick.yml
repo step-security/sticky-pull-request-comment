@@ -15,6 +15,11 @@ on:
         description: "Specify a script to run after audit fix"
         required: false
         default: "yarn all"
+      mode:
+        description: "Run mode: cherry-pick or verify"
+        required: false
+        default: "cherry-pick"
+
   pull_request:
     types: [opened, synchronize, labeled]
 
