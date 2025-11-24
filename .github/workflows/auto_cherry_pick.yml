@@ -7,14 +7,16 @@ on:
         description: "Base branch to create the PR against"
         required: true
         default: "main"
-      script:
-        description: "Specify the build script to run"
-        required: true
-        type: string
-      mode:
-        description: "Run mode: cherry-pick or verify"
+      package_manager:
+        description: "Specify package manager (npm or yarn)"
         required: false
-        default: "cherry-pick"
+        default: "yarn"
+      script:
+        description: "Specify a script to run after audit fix"
+        required: false
+        default: "yarn all"
+  pull_request:
+    types: [opened, synchronize, labeled]
 
 permissions:
   contents: write
@@ -30,5 +32,6 @@ jobs:
       original-owner: "marocchino"
       repo-name: "sticky-pull-request-comment"
       base_branch: ${{ inputs.base_branch }}
-      script: "${{ inputs.script || 'yarn all'}}"
+      package_manager: "yarn"
+      script: ${{ inputs.script || 'yarn all' }}
       mode: ${{ github.event_name == 'pull_request' && 'verify' || inputs.mode }}
