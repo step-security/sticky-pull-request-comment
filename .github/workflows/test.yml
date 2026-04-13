@@ -11,6 +11,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       pull-requests: write
     steps:
       - name: Harden the runner (Audit all outbound calls)
@@ -19,14 +20,14 @@ jobs:
           egress-policy: audit
 
       - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
-      - run: yarn install
+      - run: npm ci
       - run: |
           set -o pipefail
           mkdir -p ./pr
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
           echo "all_result<<$EOF" >> "$GITHUB_ENV"
-          yarn all >> "$GITHUB_ENV" 2>&1 || true  # proceed even if yarn fails
-          echo >> "$GITHUB_ENV"  # yarn all doesn't necessarily produce a newline
+          npm run all >> "$GITHUB_ENV" 2>&1 || true  # proceed even if npm run all fails
+          echo >> "$GITHUB_ENV"  # npm run all doesn't necessarily produce a newline
           echo "$EOF" >> "$GITHUB_ENV"
         id: all
       - uses: ./
@@ -35,7 +36,7 @@ jobs:
           header: All
           message: |
             <details open>
-            <summary>Output of yarn all</summary>
+            <summary>Output of npm run all</summary>
 
             ```shell
             ${{ env.all_result }}
