@@ -1,6 +1,6 @@
 {
   "name": "sticky-pull-request-comment",
-  "version": "3.0.1",
+  "version": "3.0.3",
   "private": true,
   "description": "Create comment on pull request, if exists update that comment.",
   "main": "lib/main.js",
@@ -36,7 +36,7 @@
     "axios": "^1.13.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.6",
+    "@biomejs/biome": "2.4.10",
     "@rollup/plugin-commonjs": "^29.0.2",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",

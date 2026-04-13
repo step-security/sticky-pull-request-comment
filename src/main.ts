@@ -29,6 +29,7 @@ import {
   repo,
   skipUnchanged,
 } from "./config"
+import {validateBody, validateExclusiveModes} from "./validate"
 
 async function validateSubscription(): Promise<void> {
   const eventPath = process.env.GITHUB_EVENT_PATH
@@ -81,6 +82,14 @@ async function run(): Promise<undefined> {
 
   try {
     await validateSubscription()
+    validateExclusiveModes(
+      deleteOldComment,
+      recreate,
+      onlyCreateComment,
+      onlyUpdateComment,
+      hideOldComment,
+      hideAndRecreate,
+    )
     const body = await getBody()
 
     if (!body && ignoreEmpty) {
@@ -88,29 +97,7 @@ async function run(): Promise<undefined> {
       return
     }
 
-    if (!deleteOldComment && !hideOldComment && !body) {
-      throw new Error("Either message or path input is required")
-    }
-
-    if (deleteOldComment && recreate) {
-      throw new Error("delete and recreate cannot be both set to true")
-    }
-
-    if (deleteOldComment && onlyCreateComment) {
-      throw new Error("delete and only_create cannot be both set to true")
-    }
-
-    if (deleteOldComment && hideOldComment) {
-      throw new Error("delete and hide cannot be both set to true")
-    }
-
-    if (onlyCreateComment && onlyUpdateComment) {
-      throw new Error("only_create and only_update cannot be both set to true")
-    }
-
-    if (hideOldComment && hideAndRecreate) {
-      throw new Error("hide and hide_and_recreate cannot be both set to true")
-    }
+    validateBody(body, deleteOldComment, hideOldComment)
 
     const octokit = github.getOctokit(githubToken)
     const previous = await findPreviousComment(octokit, repo, pullRequestNumber, header)
