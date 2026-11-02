@@ -52319,7 +52319,7 @@ function requireFollowRedirects () {
 	    }
 	  }
 	  // Ensure sensitive headers are always present
-	  if (!isArray(options.sensitiveHeaders)) {
+	  if (!Array.isArray(options.sensitiveHeaders)) {
 	    options.sensitiveHeaders = [];
 	  }
 
@@ -52695,10 +52695,6 @@ function requireFollowRedirects () {
 	  assert$1(isString(subdomain) && isString(domain));
 	  var dot = subdomain.length - domain.length - 1;
 	  return dot > 0 && subdomain[dot] === "." && subdomain.endsWith(domain);
-	}
-
-	function isArray(value) {
-	  return value instanceof Array;
 	}
 
 	function isString(value) {
